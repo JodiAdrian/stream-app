@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
+use Illuminate\Support\Str; //class Str milik Laravel untuk membuat string acak (random).
+use App\Models\Movie;
 
 class MovieController extends Controller
 {
@@ -28,7 +29,7 @@ class MovieController extends Controller
             'large_thumbnail' => 'required|image|mimes:jpeg,png,jpg',
             'trailer' => 'required|url',
             'movie' => 'required|url',
-            'casts' => 'required|string',
+            'cast' => 'required|string',
             'categories' => 'required|string',
             'release_date' => 'required|string',
             'about' => 'required|string',
@@ -43,9 +44,19 @@ class MovieController extends Controller
         $originalSmallThumbnailName = Str::random(10).$smallThumbnail->getClientOriginalName();
         $originalLargeThumbnailName = Str::random(10).$largeThumbnail->getClientOriginalName();
 
+        // Simpan file thumbnail ke storage
         $smallThumbnail->storeAs('public/Thumbnail', $originalSmallThumbnailName);
         $largeThumbnail->storeAs('public/Thumbnail', $originalLargeThumbnailName);
 
-        dd($originalSmallThumbnailName, $originalLargeThumbnailName);
+        //original name thumbnail
+        $data['small_thumbnail'] = $originalSmallThumbnailName;
+        $data['large_thumbnail'] = $originalLargeThumbnailName;
+
+        // Debug untuk cek hasil upload
+        //dd($originalSmallThumbnailName, $originalLargeThumbnailName);
+
+        Movie::create($data);
+
+        return redirect()->route('admin.movie')->with('success', 'Movie created successfully!');
     }
 }

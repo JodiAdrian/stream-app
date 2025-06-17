@@ -60,8 +60,8 @@
                         </div>
                         <div class="form-group">
                             <label for="short-about">Casts</label>
-                            <input type="text" class="form-control" id="short-about" name="casts"
-                                   value="{{ old('casts') }}" placeholder="Jackie Chan">
+                            <input type="text" class="form-control" id="short-about" name="cast"
+                                   value="{{ old('cast') }}" placeholder="Jackie Chan">
                         </div>
                         <div class="form-group">
                             <label for="short-about">Categories</label>
@@ -94,7 +94,7 @@
                             </select>
                         </div>
                     </div>
-                    
+
                     <!-- /.card-body -->
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">Submit</button>
