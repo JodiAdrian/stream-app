@@ -38,6 +38,11 @@
                                    value="{{ old('trailer') }}" placeholder="Video url">
                         </div>
                         <div class="form-group">
+                            <label for="trailer">Movie</label>
+                            <input type="text" class="form-control" id="movie" name="movie"
+                                   value="{{ old('movie') }}" placeholder="Movie url">
+                        </div>
+                        <div class="form-group">
                             <label for="duration">Duration</label>
                             <input type="text" class="form-control" id="duration" name="duration"
                                    value="{{ old('duration') }}" placeholder="1h 39m">
@@ -89,8 +94,8 @@
                             </select>
                         </div>
                     </div>
+                    
                     <!-- /.card-body -->
-
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
