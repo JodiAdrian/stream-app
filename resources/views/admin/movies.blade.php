@@ -38,6 +38,7 @@
                             </tr>
                             </thead>
                             <tbody>
+                            {{--looping berdasarkan public function index--}}
                             @foreach($movies as $movie)
                             <tr>
                                 <td>{{ $movie->id }}</td>
